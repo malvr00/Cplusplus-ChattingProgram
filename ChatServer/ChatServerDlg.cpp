@@ -345,7 +345,7 @@ LRESULT CChatServerDlg::OnReceiveMsg(WPARAM wParam, LPARAM lParam)
 	// TODO: 여기에 구현 코드 추가.
 	char szSendData[DATA_SIZE] = "", szReceiveData[DATA_SIZE] = "";
 	CString strName;
-	char szName[20];
+	char szName[20], szName2[20];
 
 	CClientSocket* pSocket = (CClientSocket *)lParam;
 	pSocket->Receive((void*)szReceiveData, DATA_SIZE);
@@ -353,9 +353,11 @@ LRESULT CChatServerDlg::OnReceiveMsg(WPARAM wParam, LPARAM lParam)
 	switch (szReceiveData[0]) {
 	case 'N':
 		// UserList 전송
+		szSendData[0] = 'U';
 		for (int i = 0; i < m_ctrlUserList.GetCount(); i++) {		// 접속한 유저 수 만큼 반복
 			m_ctrlUserList.GetText(i, strName);						// ListBox에서 접속 User 닉네임 엏어옴
-			sprintf_s(szSendData, DATA_SIZE, "U%s", CT2A(strName));	// User 닉네임 szSendData에 저장
+			strcpy_s(szName2, 20, CT2A(strName));
+			sprintf_s(szSendData, DATA_SIZE, "U%s", szName2);		// User 닉네임 szSendData에 저장
 			pSocket->Send((void*)szSendData, DATA_SIZE);			// User 닉네임 차례로 전송
 		}
 		pSocket->m_strName = szReceiveData + 1;						// 대화명 저장.
