@@ -12,7 +12,7 @@ public:
 	CClientSocket();
 	virtual ~CClientSocket();
 
-	CString m_strName;				// 대화 명을 저장할 변수.
+	CString m_strName;				  // 대화 명을 저장할 변수.
 	virtual void OnReceive(int nErrorCode);
 	virtual void OnClose(int nErrorCode);
 	void SetMainWindow(CWnd* pWnd);
