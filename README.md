@@ -20,4 +20,4 @@
 * Message 구분은 코드 OnReceiveMsg [[부분참조]](https://github.com/malvr00/Cplusplus-ChattingProgram/blob/main/ChatClient/ChatClientDlg.cpp)
 > 'I' : 서버접속시 인삿말, 'U' : 접속한 유저 리스트업데이트, 'C' : 유저접속 ( ~가 입장하셨습니다.), 'E' : 유저퇴장( ~가 퇴장하셨습니다.), 'F' : 강제퇴장, 'Q' : Server 종료
 
-   <img src="https://user-images.githubusercontent.com/77275513/114269452-212c4300-9a42-11eb-9ca1-0dfebaa240f4.PNG" width="450px" height="300px" title="100px" alt="RubberDuck"></img><br/>
+   <img src="https://user-images.githubusercontent.com/77275513/114269452-212c4300-9a42-11eb-9ca1-0dfebaa240f4.PNG" width="600px" height="300px" title="100px" alt="RubberDuck"></img><br/>
