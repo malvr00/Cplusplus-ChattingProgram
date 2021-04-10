@@ -3,9 +3,9 @@
 > V/C++
 
 ## Socket Chatting Server Program.
-> 유저관리.
-> > 기능.
-> > > Client가 보내오는 Message 구분.
+ 유저관리.
+ 기능.
+ Client가 보내오는 Message 구분.
 
 ###  Chatting Program Server [[코드참조]](https://github.com/malvr00/Cplusplus-ChattingProgram/tree/main/ChatServer)
 * Chtting Server에서 유저관리 방법으로 Linked List 복습할 겸 사용.
