@@ -89,7 +89,7 @@ BEGIN_MESSAGE_MAP(CChatServerDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_STOP_BT, &CChatServerDlg::OnClickedStopBt)
 	ON_BN_CLICKED(IDC_SEND_BT, &CChatServerDlg::OnClickedSendBt)
 	ON_BN_CLICKED(IDC_FORCED_EXIT_BT, &CChatServerDlg::OnClickedForcedExitBt)
-	ON_MESSAGE(UM_ACCEPT, &CChatServerDlg::OnAcceptMsg)		// 사용자 Message가 도착하면
+	ON_MESSAGE(UM_ACCEPT, &CChatServerDlg::OnAcceptMsg)	// 사용자 Message가 도착하면
 	ON_MESSAGE(UM_RECEIVE, &CChatServerDlg::OnReceiveMsg)	// 처리할 함수 지정
 	ON_MESSAGE(UM_CLOSE, &CChatServerDlg::OnCloseMsg)
 END_MESSAGE_MAP()
@@ -258,7 +258,7 @@ void CChatServerDlg::OnClickedStopBt()
 	m_ctrlStartBt.SetWindowText(_T("Server Start"));
 
 	m_Server.ShutDown();			// Server 종료
-	m_Server.Close();				// Server 닫기
+	m_Server.Close();			// Server 닫기
 	m_strReceiveData += "Server를 종료합니다.\r\n";
 	UpdateData(FALSE);
 }
@@ -291,11 +291,11 @@ void CChatServerDlg::OnClickedForcedExitBt()
 	CClientSocket* pNode;
 
 	UpdateData(TRUE);
-	strcpy_s(szName, 10, CT2A(m_strUserList));					// List에서 User 이름 가져옴
+	strcpy_s(szName, 10, CT2A(m_strUserList));				// List에서 User 이름 가져옴
 	sprintf_s(szSendData, DATA_SIZE, "F%s", szName);			// F: ForcedeExit ( 강제퇴장 )
-	UserList(m_strUserList, 'D');								// User List 에서 삭제
+	UserList(m_strUserList, 'D');						// User List 에서 삭제
 
-	BroadCast((void*)szSendData);								// 전체 접속자에게 보냄
+	BroadCast((void*)szSendData);						// 전체 접속자에게 보냄
 	m_strReceiveData += szSendData + 1;
 	m_strReceiveData += "님이 강제 퇴장 되었습니다.\r\n";
 	
@@ -303,13 +303,13 @@ void CChatServerDlg::OnClickedForcedExitBt()
 	m_ctrlReceiveData.LineScroll(m_ctrlReceiveData.GetLineCount(), 0);
 
 	POSITION frontPos, pos = m_List.GetHeadPosition();
-	while (pos != NULL) {										// Linked List 검색
+	while (pos != NULL) {							// Linked List 검색
 		frontPos = pos;
 		pNode = (CClientSocket*)m_List.GetNext(pos);			// pos 위치 가져오고 pos를 다음위치로
 		if (pNode->m_strName == m_strUserList) {
-			m_List.RemoveAt(frontPos);							// 이름이 같으면 ObList에서 제거
-			pNode->Close();										// Socket 닫기
-			delete pNode;										// Socket 제거
+			m_List.RemoveAt(frontPos);				// 이름이 같으면 ObList에서 제거
+			pNode->Close();						// Socket 닫기
+			delete pNode;						// Socket 제거
 			break;
 		}
 	}
