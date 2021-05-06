@@ -38,7 +38,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 		
 	CServerSocket m_Server;						// Server Socket
-	CObList m_List;								// 접속자 User 저장할 LinkdeList
+	CObList m_List;							// 접속자 User 저장할 LinkdeList
 public:
 	// Dlg 변수연결
 	CButton m_ctrlForcedBt;
@@ -64,6 +64,6 @@ public:
 	afx_msg LRESULT OnReceiveMsg(WPARAM wParam, LPARAM lParam);		// Receive Message 처리 함수
 	afx_msg LRESULT OnCloseMsg(WPARAM wParam, LPARAM lParam);		// Close Message 처리 함수
 
-	bool BroadCast(void* pStr);						// 접속한 모든 User에게 Message 전송
+	bool BroadCast(void* pStr);				// 접속한 모든 User에게 Message 전송
 	void UserList(CString str, char nFlag);			// User ListBox 관리 함수
 };
